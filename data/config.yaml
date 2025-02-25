@@ -1,0 +1,21 @@
+credentials:
+  usernames:
+    Admin:
+      email: guddal.jan@gmail.com
+      failed_login_attempts: 0 # Will be managed automatically
+      logged_in: False # Will be managed automatically
+      name: Admin
+      password: abc # Hashed password
+    Test:
+      email: test@gmail.com
+      failed_login_attempts: 0 # Will be managed automatically
+      logged_in: False # Will be managed automatically
+      name: Test
+      password: dwa  # Hashed password
+cookie:
+  expiry_days: 120
+  key: random_signature_key # Must be string
+  name: random_cookie_name
+preauthorized:
+  emails:
+  - guddal.jan@gmail.com
