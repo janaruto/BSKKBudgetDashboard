@@ -5,7 +5,7 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 
 # Read in data
-df = pd.read_csv('data/1825.csv')
+df = pd.read_csv('data/1826.csv')
 
 # Streamlit App
 st.title("BSKK Budget Visualization App")
@@ -63,7 +63,7 @@ if st.sidebar.button("Unselect All"):
 # Plot the data if any selection is made
 if not any([selected_produktgruppe, selected_subprodukt, selected_hauptkategorie, selected_subkategorie_1, selected_subkategorie_2]) == False:
     # Melt the DataFrame for plotting
-    value_vars = ['Ist 2018', 'Soll 2019', 'Soll 2020', 'Ist 2021', 'Ist 2022', 'Ist 2023', 'Soll 2024', 'Soll 2025', 'Plan 2026', 'Plan 2027', 'Plan 2028']
+    value_vars = ['Ist 2018', 'Soll 2019', 'Soll 2020', 'Ist 2021', 'Ist 2022', 'Ist 2023', 'Ist 2024', 'Soll 2025', 'Plan 2026', 'Plan 2027', 'Plan 2028']
     melted_df = pd.melt(df_filtered, id_vars=['Hauptkategorie', 'Subkategorie_1', 'Subkategorie_2', 'Produktgruppe', 'Subprodukt'], 
                         value_vars=value_vars, var_name='Year', value_name='Value')
 
@@ -107,11 +107,9 @@ if not any([selected_produktgruppe, selected_subprodukt, selected_hauptkategorie
     st.plotly_chart(fig, use_container_width=True)
     
     # Create a DataFrame for the percentage change plot
-    percentage_change_df = df_filtered[['Ist 2018', 'Ist 2023', 'Percentagechange Ist 2018 vs. Ist 2023']]
+    percentage_change_df = df_filtered[['Ist 2018', 'Ist 2024', 'Percentagechange Ist 2018 vs. Ist 2024']]
     percentage_change_df.index = melted_df['Hover_Label'].unique()
-    percentage_change_df['Percentagechange Ist 2018 vs. Ist 2023'] = percentage_change_df['Percentagechange Ist 2018 vs. Ist 2023'].astype(int)
-    #percentage_change_df['Ist 2018'] = percentage_change_df['Ist 2018'].astype(int)
-    #percentage_change_df['Ist 2023'] = percentage_change_df['Ist 2023'].astype(int)
+    percentage_change_df['Percentagechange Ist 2018 vs. Ist 2024'] = percentage_change_df['Percentagechange Ist 2018 vs. Ist 2024'].astype(int)
     
     st.table(percentage_change_df)
     
